@@ -3,7 +3,7 @@ library(stringr)
 library(feather)
 
 # import flights
-all_flights <- read_csv("data/flights-2008.csv")
+all_flights <- read_csv("data/flights-2008.csv") %>% filter(Cancelled != 1 & !is.na(CRSDepTime))
 flights <- all_flights %>% sample_n(50000)
 
 ## how many unique origin, destination, and carriers are there?
