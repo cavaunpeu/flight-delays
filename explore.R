@@ -1,8 +1,10 @@
 library(tidyverse)
+library(stringr)
+library(feather)
 
 # import flights
 all_flights <- read_csv("data/flights-2008.csv")
-flights <- all_flights %>% sample_n(10000)
+flights <- all_flights %>% sample_n(50000)
 
 ## how many unique origin, destination, and carriers are there?
 flights %>%
@@ -114,3 +116,7 @@ flights %>%
     x = "Month",
     y = "Average Delay (Minutes)"
   )
+
+# export to feather
+path <- "data/flights-2008-sample.feather"
+write_feather(flights, path)
