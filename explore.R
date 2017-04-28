@@ -19,6 +19,7 @@ flights %>%
 hhmm_to_timestamp <- function(hhmm) {
   mins <- str_sub(hhmm, -2)
   hours <- str_replace(hhmm, mins, "")
+  hours <- ifelse(hours == "", 0, hours)
   timestamp <- 60*as.numeric(hours) + as.numeric(mins)
   return(timestamp)
 }
