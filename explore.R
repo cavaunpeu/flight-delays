@@ -74,3 +74,43 @@ flights %>%
     y = "Count"
   )
 
+## how do day-of-week, day-of-month, month of year relate to total delay?
+flights %>%
+  group_by(DayOfWeek) %>%
+  summarise(avg_total_delay = mean(total_delay)) %>%
+  ggplot(aes(x=DayOfWeek, y=avg_total_delay)) +
+    geom_bar(stat="identity") +
+    theme_minimal() +
+    xlim("1" = "Monday", "2" = "Tuesday", "3" = "Wednesday", "4" = "Thursday",
+         "5" = "Friday", "6" = "Saturday", "7" = "Sunday") +
+    labs(
+      title = "Average Total Delays by Day of Week",
+      x = "Day of Week",
+      y = "Average Delay (Minutes)"
+    )
+
+flights %>%
+  group_by(DayofMonth) %>%
+  summarise(avg_total_delay = mean(total_delay)) %>%
+  ggplot(aes(x=DayofMonth, y=avg_total_delay)) +
+  geom_bar(stat="identity") +
+  theme_minimal() +
+  scale_x_discrete(limits=as.character(1:31)) +
+  labs(
+    title = "Average Total Delays by Day of Month",
+    x = "Day of Month",
+    y = "Average Delay (Minutes)"
+  )
+
+flights %>%
+  group_by(Month) %>%
+  summarise(avg_total_delay = mean(total_delay)) %>%
+  ggplot(aes(x=Month, y=avg_total_delay)) +
+  geom_bar(stat="identity") +
+  theme_minimal() +
+  scale_x_discrete(limits=as.character(1:31)) +
+  labs(
+    title = "Average Total Delays by Month",
+    x = "Month",
+    y = "Average Delay (Minutes)"
+  )
