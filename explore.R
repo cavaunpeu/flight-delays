@@ -121,3 +121,22 @@ flights %>%
 # export to feather
 path <- "data/flights-2008-sample.feather"
 write_feather(flights, path)
+
+# import routes
+col_names <- c("airline", "airline_id", "origin", "origin_id", "dest", "dest_id", "codeshare", "stops", "equipment")
+routes <- read_csv("data/routes.csv", col_names=col_names)
+
+## which origin airport has the most unique destinations?
+routes %>%
+  group_by(origin) %>%
+  summarise(unique_dests = length(unique(dest))) %>%
+  arrange(desc(unique_dests)) %>%
+  head(25) %>%
+  ggplot(aes(x=reorder(origin, -unique_dests), y=unique_dests)) +
+  geom_bar(stat="identity") +
+  theme_minimal() +
+  labs(
+    title = "Unique Destinations by Airport (Top 25)",
+    x = "Airport Code",
+    y = "Unique Destinations"
+  )
