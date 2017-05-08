@@ -79,7 +79,7 @@ flights %>%
   )
 ggsave("figures/distribution_of_log_average_total_delays.png")
 
-## how do day-of-week, day-of-month, month of year relate to total delay?
+## how do day-of-week, day-of-month, month-of-year relate to total delay?
 flights %>%
   group_by(DayOfWeek) %>%
   summarise(avg_total_delay = mean(total_delay)) %>%
