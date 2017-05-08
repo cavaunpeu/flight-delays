@@ -68,6 +68,18 @@ target/
 
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
+notebooks/.~flight-prediction.ipynb
 
 # exclude data from source control by default
 /data/
+
+# R
+.Rproj.user
+.Rhistory
+.Rprofile
+*.Rproj
+packrat/lib*/
+packrat/src/
+
+# Notes
+notes.md

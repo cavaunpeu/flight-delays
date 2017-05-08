@@ -1,0 +1,4 @@
+[submodule "gmplot"]
+	path = gmplot
+	url = https://github.com/cavaunpeu/gmplot.git
+	branch = variable-color-and-size-support
