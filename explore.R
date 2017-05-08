@@ -47,6 +47,7 @@ flights %>%
       x = "Airport Code",
       y = "Average Delay (Minutes)"
     )
+ggsave("figures/average_total_delays_by_airport.png")
 
 ### average delay distribution
 flights %>%
@@ -76,6 +77,7 @@ flights %>%
     x = "Log Average Total Delay (in Minutes)",
     y = "Count"
   )
+ggsave("figures/distribution_of_log_average_total_delays.png")
 
 ## how do day-of-week, day-of-month, month of year relate to total delay?
 flights %>%
@@ -91,6 +93,7 @@ flights %>%
       x = "Day of Week",
       y = "Average Delay (Minutes)"
     )
+ggsave("figures/average_total_delays_by_day_of_week.png")
 
 flights %>%
   group_by(DayofMonth) %>%
@@ -104,6 +107,7 @@ flights %>%
     x = "Day of Month",
     y = "Average Delay (Minutes)"
   )
+ggsave("figures/average_total_delays_by_day_of_month.png")
 
 flights %>%
   group_by(Month) %>%
@@ -117,6 +121,7 @@ flights %>%
     x = "Month",
     y = "Average Delay (Minutes)"
   )
+ggsave("figures/average_total_delays_by_month.png")
 
 # export to feather
 path <- "data/flights-2008-sample.feather"
@@ -140,3 +145,4 @@ routes %>%
     x = "Airport Code",
     y = "Unique Destinations"
   )
+ggsave("figures/unique_destinations_by_airport.png")
